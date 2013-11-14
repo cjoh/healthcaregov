@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/dobt.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/shapes.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<style>
+	.highlight {
+		color: yellow;
+	}
+	</style>
+	<body ng-controller="slideshow">
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Healthcare.gov</h1>
+					<h3>How We Got Here and What Caused It</h3>
+					<p>
+						<small>Follow Me On Twitter: <a href="http://twitter.com/cjoh">@cjoh</a></small>
+					</p>
+				</section>
+				<section>
+					<section>
+						<h1>IDIQ</h1>
+						<h3>Indefinite Deliverable, Indefinite Quantity</h3>
+						<p>HHS, along with many other agencies use IDIQ contracts to prenegotiate rates, and renew every 10 years. They buy all information technology through these contracts.</p>
+					</section>
+					<section>
+						<h1>2007</h1>
+						<h2>HHS Issues 16 IDIQ Contracts</h2>
+						<h3>HHSM-500-2007-[00014I-00029I]</h3>
+						<p class="fragment">The last two numbers represent a range of ID numbers. Each number correlates to a vendor</p>
+						<p class="fragment"><strong>IDIQ Contracts Awarded To:</strong>Northrop Grumman, <span class="highlight">CGI Federal</span>, EDS, CSC, IBM, Lockheed Martin, SAIC, ViPS, Buccaneer Computer Systems, IDL Solutions, <span class="highlight">Quality Software Services</span>, Maricom Systems, 2020 LLC, iFed LLC, Alta Systems, DCCA</p>
+						
+						
+					</section>
+					<section>
+						<h1>2010</h1>
+						<p class="fragment">HHS issues an RFP for the Federal Exchange to its IDIQ Contract Holders</p>
+						<p class="fragment">If they hadn't, it would have taken ~18 months to just do vendor selection.</p>
+						<p class="fragment">That's half the time they had to build the site</p>
+						<p class="fragment">They got 4 bids back. While almost all these vendors had their fingers in Healthcare.gov, the <strong>prime</strong> contracts went to <span class="highlight">QSSI</span> and <span class="highlight">CGI Federal</span>.</p>
+					</section>
+					<section>
+						<h1>CGI Federal<br/><a href="https://www.fpds.gov/ezsearch/search.do?indexName=awardfull&templateName=1.4.4&s=FPDS&q=HHSM500T0007+7530++REF_IDV_PIID%3A%22HHSM500200700015I%22" target="_blank">HHSM-500-2007-00015I</a></h1>
+					</section>
+				</section>
+				<section>
+				<section>
+					<h1>Contract Value: $630 Million</h1>
+					<small>Source: CMS Weekly Press Briefing, 11/1/2013</small>
+					<p class="fragment">A Contract's Value isn't how much something cost; it's how much money has been set aside to pay for potential work</p>
+					
+				</section>
+				<section data-state="gohcchart">
+					<h2>Healthcare.gov Cost Over Time</h2>
+					<canvas id="hcgovchart" width="1920" height="800"></canvas>
+
+					<script>
+						var hcgovdata = {
+							labels: ["2010-11","2010-12","2011-01","2011-02","2011-05","2011-07","2011-08","2011-09","2011-12","2012-01","2012-02","2012-03","2012-04","2012-07","2012-09","2012-10","2012-11","2012-12","2013-01","2013-02","2013-08","2013-09","2013-10"],
+							datasets: [
+								{
+									fillColor: "rgba(255,255,255,0.7)",
+									strokeColor: "rgba(255,255,255,1)",
+									data: [
+											72305583.99,
+											14780000.00,
+											15330000.00,
+											1170000.00,
+											402030.00,
+											11420000.00,
+											61535995.00,
+											34359961.00,
+											61690000.00,
+											37090000.00,
+											22763397.39,
+											2200000.00,
+											20500000.00,
+											577790.00,
+											54868150.00,
+											2000000.00,
+											0.00,
+											33270000.00,
+											9920000.00,
+											0.00,
+											68400000.00,
+											34667990.00,
+											76723230.00
+										]
+								}
+							]
+
+						}
+					</script>
+					<small>Source: <a href="http://usaspending.gov/explore?tab=By+Prime+Awardee&pageno=1&fiscal_year=all&idvpiid=HHSM500200700015I&typeofview=transactions">USASpending.gov</a></small>
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+				<section data-state="gohcgovoctchart" data-transition="zoom">
+					<h2>What's Been Spent So Far</h2>
+					<canvas id="hcgovoctchart" width="1920" height="800"></canvas>
+					<script>
+						var hcspenddata = [
+							{ 
+								value: 174,
+								color: "rgba(255,255,255,1)",
+								label: "Spent"
+							},
+							{
+								value: 456,
+								color: "rgba(255,255,255,0.1)",
+								label: "Remaining"
+							}
+						]
+					</script>
+					<p>$174 Million out of a $630 Million Contract</p>
+					<small><a href="http://news.yahoo.com/healthcare-gov-suffers-outage-as-sebelius-testifies-that-it-s-never-crashed-181641521.html">Source</a></small>
+				</section>
+				</section>
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h1>October, 2013</h1>
+						<small>Just hit the right arrow if you can't stomach it anymore</small>
+					</section>
+					<section data-background="images/hcgovwaitingroom.png">
+					</section>
+					<section data-background="images/hcgovfail-1.png">
+					</section>
+					<section data-background="images/hcgovfail3.jpg">
+					</section>
+					<section data-background="images/hcgovfail-2.jpg">
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<h1>So What Caused It?</h1>
+					</section>
+					<section data-state="gostandingschart">
+					<h3>For Gov IT Projects of Greater than $10MM</h3>
+					<canvas id="standingschart" width="800" height="800"></canvas>
+						<script>
+						var standingsdata = [
+							{ 
+								value: 6.4,
+								color: "rgba(31,255,147,1)",
+								label: "Worked"
+							},
+							{
+								value: 41.6,
+								color: "rgba(48,48,48,1)",
+								label: "Failed"
+							},
+							{
+								value: 52,
+								color: "rgba(143,143,143,1)",
+								label: "Troubled"
+							}
+						]
+					</script>
+					
+					<p style="color: rgba(31,255,147,1)">6.4% Succeed</p><p style="color: rgba(143,143,143,1)">52% are Over Budget or Delayed</p> <p style="color: rgba(48,48,48,1)">41.6% Fail Completely</p>
+					<small><a href="http://www.computerworld.com/s/article/9243396/Healthcare.gov_website_didn_t_have_a_chance_in_hell_">Source: Standish Group &amp; Standish Group</a></small>
+					</section>
+				
+				<section>
+					<div id="timeline-embed"></div>
+					<small>You can use the j and k keys to move between points on the timeline</small>
+					<script type="text/javascript">
+				        var timeline_config = {
+				            width:              '100%',
+				            height:             '1080',
+				            source:             'https://docs.google.com/spreadsheet/pub?key=0Ajn678WzGH5XdGE2SVRZeG5RZjhMWnhkZHNHWmQ5VEE&output=html',
+				            embed_id:           'timeline-embed',               //OPTIONAL USE A DIFFERENT DIV ID FOR EMBED
+				            start_at_end:       true,                          //OPTIONAL START AT LATEST DATE
+				            start_zoom_adjust:  '3',                            //OPTIONAL TWEAK THE DEFAULT ZOOM LEVEL
+				            hash_bookmark:      false,                           //OPTIONAL LOCATION BAR HASHES
+				            font:               'Bevan-PotanoSans',             //OPTIONAL FONT
+				            debug:              true,                           //OPTIONAL DEBUG TO CONSOLE
+				            lang:               'en',                           //OPTIONAL LANGUAGE
+				            maptype:            'watercolor',                   //OPTIONAL MAP STYLE
+				            css:                'lib/timeline/css/timeline.css',     //OPTIONAL PATH TO CSS
+				            js:                 'lib/timeline/js/timeline.js'    //OPTIONAL PATH TO JS
+				        } 
+					</script>
+				<script type="text/javascript" src="lib/timeline/js/storyjs-embed.js"></script>
+				
+				</section>
+				</section>
+				<section data-background="#007777">
+					<h2>Success = <span class="fragment">Money</span> <span class="fragment">+ Time</span> <span class="fragment">+ Talent</span> <span class="fragment">+ Accountability</span></h2>
+				</section>
+				<section data-background="#007777">
+				<h1>Money: $630 Million</h1>
+				<small>This is enough money for, well, anything</small>
+				</section>
+					<section>
+					<section data-background="#007777">
+						<h2>Time: Nearly 3 years</h2>
+						<small class="fragment">But, But Vendor Selection, Repeal Votes, Supreme Court!</small>
+						<h1 class="fragment">Ok, fine. Time: 18 Months</h1>
+						<p class="fragment">That's still plenty of time.</p>
+					</section>
+					<section>
+						<h2>Paperwork Reduction Act & Other Nonsense </h2>
+						<img src="images/wasthispagehelpful.png"/ class="fragment">
+						<p class="fragment">"Information Collections" like this require a 6 month clearance period.</p>
+						<p class="fragment">Once form fields are decided upon, very little flexibility</p>
+					</section>
+					</section>
+				<section>
+					<section>
+					<h1>Talent</h1>
+					</section>
+					<section>
+					
+					<video data-autoplay src="images/jedandsam.mov"></video>
+					</section>
+											<section>
+						<h1>Limited Selection</h1>
+						<h2>With IDIQ: <span class="fragment">Open to 16. 4 Bids. 2.5 Years.</span></h2>
+						<h2 class="fragment">Without IDIQ: Hundreds of bids, 12 months?</h2>
+					</section>
+					<section>
+					<h1>Clearance</h1>
+					<ol>
+					<li class="fragment">Very Expensive</li>
+					<li class="fragment">Takes a long time</li>
+					<li class="fragment">Contractors must incur cost</li>
+					</ol>
+					<h2 class="fragment">Clearance &gt; Talent</h2>
+					</section>
+					<section>
+						<h2>Clearance Process Lacks Imagination</h2>
+						<img src="images/clearanceform.png">
+					</section>
+
+					<section>
+						<h1>This Results In Huge Problems!</h1>
+						<h2>Government Can Select From A Limited Number of Contractors Who Can Hire From a Limited Set of Talent.</h2>
+					</section>
+					<section data-background="images/riskvsfailure.jpg">
+						<h1>The Outcome</h1>
+
+					</section>
+				</section>
+				<section>
+				<h2>Success = Money + Time + <strike>Talent</strike> + Accountability</h2>
+				</section>
+				<section>
+					<section>
+						<h1>Accountability</h1>
+							<h3 class="fragment">How come nobody knew what was going on?</h3>
+							<h3 class="fragment">How Do These People Keep Getting Hired?</h3>
+
+
+					</section>
+					<section>
+					<h2>Project Criteria</h2>
+					<p>Plan Finder <a href="https://www.itdashboard.gov/investment?buscid=1001">Evaluation</a> As Of 11/11/13</p>
+						<img src="images/itdashboard2.jpg"/>
+						<p>Perhaps We're Not Measuring The Wrong Things?</p>
+					</section>
+					<section>
+					<h2>What We Measure</h2>
+						<ol>
+							<li class="fragment">Cost Variance</li>
+							<li class="fragment">Schedule</li>
+						</ol>
+					</section>
+				<section>
+					<h1>Contractor Performance</h1>
+					<img src="images/ppirs.jpg" />
+					<p>Contractor "Past Performance" information is kept in a database called PPIRS (pronounced 'peepers')</p>
+				</section>
+				<section>
+					<h1>PPIRS Isn't great</h1>
+					<img src="images/ppirs2.jpg" />
+					<p><a href="http://www.gao.gov/new.items/d09374.pdf">Read The Whole Report</a></p>
+				</section>
+				<section>
+					<img src="images/ppirs3.jpg" />
+					<p><a href="http://www.gao.gov/new.items/d09374.pdf">Read The Whole Report</a></p>
+				</section>
+				</section>
+				<section>
+				<h2>Success = Money + Time + <strike>Talent + Accountability</strike></h2>
+				</section>
+				<section data-background="#007777">
+					<h1>So How Do We Fix It?</h1>
+				</section>
+				<section>
+				<section data-background="#007777">
+				<h1>Talent</h1>
+				</section>
+					<section data-background="#007777">
+					<h1>Holistic view of Procurement Ecosystem</h1>
+					<h3>Grow New Suppliers</h3>
+				</section>
+				<section data-background="#007777">
+					<h1>Streamline Business Registration</h1>
+					<h3>Make it like TurboTax</h3>
+					<h3>Create API, let Private Sector compete for User Interface</h3>
+				</section>
+
+				<section data-state="gowitchart" data-background="#007777">
+					<h2>Simplified Acquisition Threshold = $150k</h2>
+					
+					<canvas id="witchart" width="1000" height="500"></canvas><br/>
+					
+					<ul>
+						<li class="fragment">Raise the SAT to 500k for IT purchases</li>
+						<li class="fragment">Break down large IT projects into smaller chunks</li>
+						<li class="fragment">Make Small Businesses the only ones eligible for it.</li>
+					</ul>
+					<script>
+						var witdata = {
+							labels: ["Today's SAT", "Ideal SAT"],
+							scaleFontSize: 18,
+							datasets: [
+								{
+									fillColor: "rgba(255,255,255,0.7)",
+									strokeColor: "rgba(255,255,255,1)",
+									scaleFontSize: 18,
+									data: [
+											150,500
+										]
+								}
+							]
+
+						}
+					</script>
+				</section>
+				<section data-background="#007777">
+					<h1>Streamline Clearance Process</h1>
+					<h3>Make it both more secure and cost effective</h3>
+				</section>
+				<section>
+				<h1>Write For Humans</h1>
+				<video data-autoplay class="stretch" src="images/writeforhumans.mov"></video>
+				<p><a href="http://writeforhumans.io" target="_blank">Use Write for Humans</a></p>
+				</section>
+				<h1>Design For Humans</h1>
+				<section data-background="images/fbo.png">
+				</section>
+				<section data-background="images/screendoor1.png"></section>
+				<section data-background="images/screendoor2.png"></section>
+				<section>
+
+				<section>
+					<section>
+						<h1>Accountability</h1>
+					</section>
+					<section data-background="images/gds.jpg"></section>
+				<section data-background="#007777">
+					<h2>GDS</h2>
+					<ol>
+						<li class="fragment">Started after UK had repeated IT Disasters</li>
+						<li class="fragment">Cabinet Level Office</li>
+						<li class="fragment">Full Authority over IT from Chief Executive</li>
+						<li class="fragment">Savings of $20MM/yr</ng-list="string">
+					</ol>
+				</section>
+				<section data-background="#007777">
+					<h2>What Does a US GDS Look Like?</h2>
+					<h3 class="fragment">Probably something like this</h3>
+					<ul>
+					
+					<li class="fragment">Initial Staff of 50 people</li>
+					<li class="fragment">30 Developers and Designers</li>
+					<li class="fragment">10 Agency Liasons who help Agencies with Contracts</li>
+					<li class="fragment">10 Administrative And Overhead</li>
+					<li class="fragment">Ability to pay them Professional Compensation<super>*</super></li>
+					<small class="fragment"><super>*</super>We do this for the NIH</small>
+					</ul>
+				</section>
+				<section data-background="#007777">
+					<h1>The Highest Paid Feds<super>*</super></h1>
+					<img src="images/govemployees.jpg" /><br/>
+					<small><super>*Besides POTUS</super></small>
+				</section>
+				<section data-background="#007777">
+				<h3>(Yes, There is an Electron Kebebew)</h3>
+				<img src="images/electron.png"/>
+				<small><a href="http://www.ucsf.edu/news/2007/05/3816/electron" target="_blank">Source</a></small>
+				</section>
+				<section data-state="gogdschart">
+					<h2>If We Can Do This For Docs, Why Not For Digital?</h2>
+					<h3 >Estimated USGDS Budget: $10,000,000</h4>
+					<h3 >Healthcare.gov IT Budget: $630,000,000</h4>
+					<canvas id="gdschart" height="400" width="1000"></canvas>
+					<script>
+						var gdsdata=[
+							{
+								value: 10,
+								color: "#ffffff"
+							},
+							{ 
+								value: 620,
+								color: "rgba(0,0,0,0.1)"
+							}
+
+						];
+					</script>
+
+				</section>
+					<section>
+					<h2>Executive Leadership</h2>
+						<li class="fragment">Elevate the CTO Role - "Secretary of Technology"</li>
+						<li class="fragment">CTO Oversees GDS</li>
+						<li class="fragment">GDS is On The Hook. When Stuff Breaks, we know who to fire.</li>
+					</section>
+					<section>
+					<h2>Better Measurements</h2>
+						<li class="fragment">Improve and overhaul PPIRS</li>
+						<li class="fragment">Allow Contractors to rate Gov Project Managers, too</li>
+						<li class="fragment">Use Qualitative Data</li>
+					</section>
+				</section>
+				<section>
+					<h1>Some Smaller Tweaks</h1>
+				</section>
+				<section>
+					<h1>THE END</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="lib/js/Chart.min.js"></script>
+
+		<script>
+			Reveal.addEventListener( 'gohcchart', function() {
+		var ctx = document.getElementById("hcgovchart").getContext("2d");
+				new Chart(ctx).Line(hcgovdata,{animation: true, animationSteps : 100, scaleFontColor: "#fff", scaleGridLineColor : "rgba(255,255,255,0.4)"});
+			// Full list of configuration options available here0.9
+			// https://github.com/hakimel/reveal.js#configuration
+			});
+		Reveal.addEventListener( 'gohcgovoctchart', function() {
+		var ctx = document.getElementById("hcgovoctchart").getContext("2d");
+				new Chart(ctx).Pie(hcspenddata,{animation: true,animationSteps: 100,});
+			// Full list of configuration options available here0.9
+			// https://github.com/hakimel/reveal.js#configuration
+			});
+				Reveal.addEventListener( 'gogdschart', function() {
+		var ctx = document.getElementById("gdschart").getContext("2d");
+				new Chart(ctx).Doughnut(gdsdata,{animation: true,animationSteps: 100,});
+			// Full list of configuration options available here0.9
+			// https://github.com/hakimel/reveal.js#configuration
+			});
+		Reveal.addEventListener( 'gostandingschart', function() {
+		var ctx = document.getElementById("standingschart").getContext("2d");
+				new Chart(ctx).Pie(standingsdata,{animation: true,animationSteps: 100,});
+			// Full list of configuration options available here0.9
+			// https://github.com/hakimel/reveal.js#configuration
+			});
+		Reveal.addEventListener( 'gowitchart', function() {
+		var ctx = document.getElementById("witchart").getContext("2d");
+				new Chart(ctx).Bar(witdata,{animation: true,animationSteps: 100,scaleFontColor: "#fff", scaleFontSize: 36, scaleGridLineColor : "rgba(255,255,255,0.4)"});
+			// Full list of configuration options available here0.9
+			// https://github.com/hakimel/reveal.js#configuration
+			});
+						Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 1920,
+				height: 1080,
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
